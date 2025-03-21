@@ -1,7 +1,8 @@
 name: Crear y subir imagen docker
 on:
-  branches:
-    - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs: 
