@@ -8,7 +8,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: login en Docker Hub
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
+      
       - name: construir imagen
-        run: docker build . -t emarcasdev/practica-actions:latest # Comando practica anterior
+        run: docker build . -t emarcasdev/practica-actions:latest 
+
       - name: subir imagen a docker
         run: docker push emarcasdev/practica-actions:latest
